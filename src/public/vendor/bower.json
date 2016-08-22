@@ -1,0 +1,7 @@
+{
+  "name": "stem-markup",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "jquery-form": "^3.46.0"
+  }
+}

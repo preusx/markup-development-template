@@ -1,0 +1,76 @@
+-
+  var brackets = {
+    tag: ['{%', '%}'],
+    exp: ['{{', '}}'],
+  };
+
+  var args = function(a) {
+    return Array.prototype.slice.call(a);
+  };
+
+  var tag = function() {
+    return [
+      brackets.tag[0],
+      args(arguments).join(' '),
+      brackets.tag[1],
+      ].join(' ');
+  };
+
+  var exp = function() {
+    return [
+      brackets.exp[0],
+      args(arguments).join(' '),
+      brackets.exp[1],
+      ].join(' ');
+  };
+
+
+  var url = function(url) { return exp('url(', url, ')'); }
+  var static = function(url) { return exp('static(', url, ')'); }
+
+
+mixin tag(name)
+  if !name
+    != brackets.tag[0]
+    block
+    != brackets.tag[1]
+  else
+    | !{tag(name, args(arguments).slice(1).join(' '))}
+    block
+    | !{tag('end' + name)}
+
+
+mixin exp
+  != brackets.exp[0]
+  block
+  != brackets.exp[1]
+
+
+mixin bl
+  +tag('block', args(arguments).join(' '))
+    block
+
+
+mixin inc
+  +tag include
+    block
+
+
+mixin ext
+  +tag extends
+    block
+
+
+mixin if
+  +tag('if', args(arguments).join(' '))
+    block
+
+
+mixin for
+  +tag('for', args(arguments).join(' '))
+    block
+
+
+mixin trans(condition)
+  +tag('trans', condition)
+    block

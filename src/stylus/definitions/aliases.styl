@@ -1,0 +1,130 @@
+$Aliases = {
+  d: display
+
+
+  pos: position
+
+
+  bg:            background
+  bg-attachment: background-attachment
+  bg-blend-mode: background-blend-mode
+  bg-clip:       background-clip
+  bg-color:      background-color
+  bg-image:      background-image
+  bg-origin:     background-origin
+  bg-position:   background-position
+  bg-repeat:     background-repeat
+  bg-size:       background-size
+
+
+  brd:                     border
+  brd-block-end:           border-block-end
+  brd-block-end-color:     border-block-end-color
+  brd-block-end-style:     border-block-end-style
+  brd-block-end-width:     border-block-end-width
+  brd-block-start:         border-block-start
+  brd-block-start-color:   border-block-start-color
+  brd-block-start-style:   border-block-start-style
+  brd-block-start-width:   border-block-start-width
+  brd-bottom:              border-bottom
+  brd-bottom-color:        border-bottom-color
+  brd-bottom-left-radius:  border-bottom-left-radius
+  brd-bottom-right-radius: border-bottom-right-radius
+  brd-bottom-style:        border-bottom-style
+  brd-bottom-width:        border-bottom-width
+  brd-collapse:            border-collapse
+  brd-color:               border-color
+  brd-image:               border-image
+  brd-image-outset:        border-image-outset
+  brd-image-repeat:        border-image-repeat
+  brd-image-slice:         border-image-slice
+  brd-image-source:        border-image-source
+  brd-image-width:         border-image-width
+  brd-inline-end:          border-inline-end
+  brd-inline-end-color:    border-inline-end-color
+  brd-inline-end-style:    border-inline-end-style
+  brd-inline-end-width:    border-inline-end-width
+  brd-inline-start:        border-inline-start
+  brd-inline-start-color:  border-inline-start-color
+  brd-inline-start-style:  border-inline-start-style
+  brd-inline-start-width:  border-inline-start-width
+  brd-left:                border-left
+  brd-left-color:          border-left-color
+  brd-left-style:          border-left-style
+  brd-left-width:          border-left-width
+  brd-radius:              border-radius
+  brd-right:               border-right
+  brd-right-color:         border-right-color
+  brd-right-style:         border-right-style
+  brd-right-width:         border-right-width
+  brd-spacing:             border-spacing
+  brd-style:               border-style
+  brd-top:                 border-top
+  brd-top-color:           border-top-color
+  brd-top-left-radius:     border-top-left-radius
+  brd-top-right-radius:    border-top-right-radius
+  brd-top-style:           border-top-style
+  brd-top-width:           border-top-width
+  brd-width:               border-width
+
+
+  fs: font-size
+  fw: font-weight
+  fh: line-height
+  fa: text-align
+  fd: text-decoration
+
+  ta: text-align
+  td: text-decoration
+
+  lh: line-height
+
+
+  h:     height
+  max-h: max-height
+  min-h: min-height
+  w:     width
+  max-w: max-width
+  min-w: min-width
+
+
+  ma: margin
+  mt: margin-top
+  mr: margin-right
+  mb: margin-bottom
+  ml: margin-left
+
+
+  pa: padding
+  pt: padding-top
+  pr: padding-right
+  pb: padding-bottom
+  pl: padding-left
+
+
+  va: vertical-align
+}
+
+@alias
+  for $alias, $prop in $Aliases
+    {$alias}: $prop
+
+
+mh($lft, $rgt=$lft)
+  ml $lft
+  mr $rgt
+
+
+mv($top, $bot=$top)
+  mt $top
+  mb $bot
+
+
+ph($lft, $rgt=$lft)
+  pl $lft
+  pr $rgt
+
+
+pv($top, $bot=$top)
+  pt $top
+  pb $bot

@@ -1,0 +1,28 @@
+$ResponsiveBreakpoints = {
+  xs:  0
+  // ns:  320px // Not small
+  sm:  544px
+  md:  768px
+  lg:  992px
+  xl:  1200px
+  fhd: 1980px
+}
+
+@breakpoints
+  $keys = keys($ResponsiveBreakpoints)
+
+  for $bp, $i in $keys
+    {$bp}: '(min-width: %s)' % $ResponsiveBreakpoints[$bp]
+    {'from-%s' % $bp}: '(min-width: %s)' % $ResponsiveBreakpoints[$bp]
+    {'to-%s' % $bp}: '(max-width: %s)' % ($ResponsiveBreakpoints[$bp] - 1px)
+
+    $j = $i
+    while $j < length($keys)
+      $bps = ( \
+          $ResponsiveBreakpoints[$bp] \
+          $ResponsiveBreakpoints[$keys[$j]]
+        )
+      $val = '(min-width: %s) and (max-width: %s)' % $bps
+
+      {'from-%s-to-%s' % ($bp $keys[$j])}: $val
+      {'between-%s-%s' % ($bp $keys[$j])}: $val

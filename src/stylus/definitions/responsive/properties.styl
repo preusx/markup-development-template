@@ -1,0 +1,29 @@
+@require '../aliases'
+@require 'breakpoints'
+
+$ResponsiveProperties = ( \
+  'color' \
+  'mh' \
+  'mv' \
+)
+
+responsive-property()
+  if current-property
+    $pb = split('--', current-property[0])
+    $prop = $pb[0]
+    $bp = $pb[1]
+
+    $q = unquote('(min-width: %s)' % $ResponsiveBreakpoints[$bp])
+
+    @media $q
+      {$prop} arguments
+
+
+responsive-make($list)
+  for $prop in $list
+    for $bp in $ResponsiveBreakpoints
+      define('' + ($prop + '--' + $bp), responsive-property, true)
+
+
+for $list in (keys($Aliases) values($Aliases) $ResponsiveProperties)
+  responsive-make($list)

@@ -1,0 +1,55 @@
+@require 'responsive'
+
+$Grid = merge({
+  gutter: 4sp
+  columns: 24
+
+  template: '(Math.floor(100 / %s * value * 100000) / 100000)%'
+}, $Grid)
+
+
+glist($gutter=$Grid.gutter)
+  clear fix
+
+  display block
+  ph 0
+  mh unquote('calc(-.5 * %s)' % $gutter)
+
+  list-style none
+
+
+gcell($size, $gutter=$Grid.gutter)
+  min-height 1px
+
+  ph unquote('calc(.5 * %s)' % $gutter)
+
+  if $size == $Grid.columns || $size == 100%
+    display block
+    float none
+    width 100%
+
+  else if size == 0
+    display none
+
+  else
+    display block
+    float left
+    width $size
+
+
+gcontainer($gutter=$Grid.gutter)
+  display block
+  mh auto
+  ph unquote('calc(.5 * %s)' % $gutter)
+
+
+responsive-make(( \
+  'glist' \
+  'gcell' \
+  'gcontainer' \
+))
+
+
+:root
+  // Grid size unit
+  --define: gr unquote($Grid.template % $Grid.columns)
